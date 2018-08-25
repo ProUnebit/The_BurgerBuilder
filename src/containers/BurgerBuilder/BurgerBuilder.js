@@ -2,6 +2,8 @@ import React from 'react'
 import Input from '../../hoc/Input'
 import Burger from '../../components/Burger/Burger'
 import BuildControls from '../../components/Burger/BuildControls/BuildControls'
+import Modal from '../../components/UI/Modal/Modal'
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
 const INGREDIENT_PRICES = {
     salad: 0.5,
@@ -22,16 +24,9 @@ class BurgerBuilder extends React.Component {
                 meat: 0
             },
             totalPrice: 4,
-            purchasable: false
+            purchasable: false,
+            purchasing: false
         }
-    }
-
-    componentDidMount() {
-        const ingredients = {
-            ...this.state.ingredients
-        };
-        const sum = Object.keys(ingredients)
-        console.log(sum)
     }
 
     updatePurchaseState = (ingredients) => {
@@ -85,9 +80,15 @@ class BurgerBuilder extends React.Component {
         this.updatePurchaseState(updateIngredients)
     }
 
+    purchaseHandler = () => {
+        this.setState({
+            purchasing: true
+        })
+    }
+
     render () {
 
-        let { ingredients, totalPrice, purchasable } = this.state;
+        let { ingredients, totalPrice, purchasable, purchasing } = this.state;
 
         const disabledInfo = {
             ...this.state.ingredients
@@ -98,12 +99,16 @@ class BurgerBuilder extends React.Component {
 
         return (
             <Input>
+                <Modal show = {purchasing}>
+                    <OrderSummary ingredients = {ingredients}/>
+                </Modal>
                 <Burger ingredients = {ingredients}/>
                 <BuildControls
                     ingredientAdded = {this.addIngredientHandler}
                     ingredientRemoved = {this.removeIngredientHandler}
                     disabled = {disabledInfo}
                     purchasable = {purchasable}
+                    ordered = {this.purchaseHandler}
                     price = {totalPrice}
                     />
             </Input>
