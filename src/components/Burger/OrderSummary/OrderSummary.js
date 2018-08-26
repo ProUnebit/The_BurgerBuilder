@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from '../../../hoc/Input'
+import Input from '../../../hoc/Input/Input'
 import Button from '../../UI/Button/Button'
 
 class OrderSummary extends React.Component {
