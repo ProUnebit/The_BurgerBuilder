@@ -115,6 +115,7 @@ class BurgerBuilder extends React.Component {
                     >
                     <OrderSummary
                         ingredients = {ingredients}
+                        price = {totalPrice}
                         purchaseCanceled = {this.purchaseCancelHandler}
                         purchaseContinued = {this.purchaseContinueHandler}
                         />

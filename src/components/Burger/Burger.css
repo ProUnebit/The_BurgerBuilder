@@ -8,6 +8,11 @@
     font-size: 1.2rem;
 }
 
+.Burger p {
+    color: #8F5E1E;
+    filter: drop-shadow(1px 2px 1px silver);
+}
+
 @media (min-width: 500px) and (min-height: 400px) {
     .Burger {
         width: 350px;
