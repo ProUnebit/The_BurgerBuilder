@@ -4,10 +4,6 @@ import Button from '../../UI/Button/Button'
 
 class OrderSummary extends React.Component {
 
-    componentWillUpdate() {
-        console.log(2)
-    }
-
     render() {
 
         const ingredientSummary = Object.keys(this.props.ingredients)
