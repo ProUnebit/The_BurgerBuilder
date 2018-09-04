@@ -1,1 +1,1 @@
-**Version:** 1.2 beta
+**Version:** 1.3 beta
