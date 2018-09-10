@@ -2,6 +2,7 @@ import React from 'react'
 import Burger from '../../Burger/Burger'
 import Button from '../../UI/Button/Button'
 import classes from './CheckoutSummary.css'
+import Chart from '../../UI/Chart/Chart'
 
 const checkoutSummary = (props) => {
 
@@ -11,6 +12,7 @@ const checkoutSummary = (props) => {
             <div className = {classes.burgerWrapper}>
                 <Burger ingredients = {props.ingredients}/>
             </div>
+            <Chart ingredients = {props.ingredients} />
             <Button
                 btnType="Danger"
                 clicked = {props.checkoutCancelled}
