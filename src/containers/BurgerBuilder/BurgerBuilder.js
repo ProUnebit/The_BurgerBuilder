@@ -31,17 +31,17 @@ class BurgerBuilder extends React.Component {
 
     componentDidMount() {
         console.log(this.props)
-        axios.get('https://my-burgerbuilder.firebaseio.com/ingredients.json')
-            .then(res => {
-                this.setState({
-                    ingredients: res.data
-                });
-            })
-            .catch(err => {
-                this.setState({
-                    error: true
-                });
-            })
+        // axios.get('https://my-burgerbuilder.firebaseio.com/ingredients.json')
+        //     .then(res => {
+        //         this.setState({
+        //             ingredients: res.data
+        //         });
+        //     })
+        //     .catch(err => {
+        //         this.setState({
+        //             error: true
+        //         });
+        //     })
     }
 
     updatePurchaseState = (ingredients) => {
