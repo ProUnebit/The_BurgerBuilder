@@ -8,7 +8,7 @@ const chart = ({ ingredients }) => {
 
     let ingredientsValues = ingredientsKeys.map(igKey => ingredients[igKey])
 
-    let charData = {
+    let chartData = {
         labels: ingredientsKeys,
         datasets: [
             {
@@ -35,13 +35,16 @@ const chart = ({ ingredients }) => {
         legend: {
             display: true,
             position: 'left'
+        },
+        layout: {
+            padding: 20
         }
     }
 
     return (
         <div className = {classes.Chart}>
             <Pie
-            	data = {charData}
+            	data = {chartData}
             	options = {options}
                 />
         </div>

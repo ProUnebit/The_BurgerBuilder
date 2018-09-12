@@ -15,7 +15,6 @@ class BurgerBuilder extends React.Component {
         super(props);
 
         this.state = {
-            purchasable: false,
             purchasing: false,
             loading: false,
             error: false
@@ -23,7 +22,7 @@ class BurgerBuilder extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props)
+        // console.log(this.props)
         // axios.get('https://my-burgerbuilder.firebaseio.com/ingredients.json')
         //     .then(res => {
         //         this.setState({
@@ -45,10 +44,7 @@ class BurgerBuilder extends React.Component {
             .reduce((sum, el) => {
                 return sum + el;
             }, 0);
-
-            this.setState({
-                purchasable: sum > 0
-            });
+            return sum > 0;
     }
 
     purchaseHandler = () => {
@@ -64,22 +60,12 @@ class BurgerBuilder extends React.Component {
     }
 
     purchaseContinueHandler = () => {
-
-        const queryParams = [];
-        for (let i in this.state.ingredients) {
-            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
-        }
-        queryParams.push('price=' + this.state.totalPrice)
-        const queryString = queryParams.join('&')
-        this.props.history.push({
-            pathname: '/checkout',
-            search: '?' + queryString
-        })
+        this.props.history.push('/checkout')
     }
 
     render () {
 
-        let { purchasable, purchasing, loading, error } = this.state;
+        let { purchasing, loading, error } = this.state;
 
         const disabledInfo = {
             ...this.props.ings
@@ -98,7 +84,7 @@ class BurgerBuilder extends React.Component {
                         ingredientAdded = {this.props.onIngredientAdded}
                         ingredientRemoved = {this.props.onIngredientRemoved}
                         disabled = {disabledInfo}
-                        purchasable = {purchasable}
+                        purchasable = {this.updatePurchaseState(this.props.ings)}
                         ordered = {this.purchaseHandler}
                         price = {this.props.price}
                         />
