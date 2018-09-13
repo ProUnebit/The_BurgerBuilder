@@ -1,4 +1,4 @@
-import * actionTypes from '../actions/actionTypes'
+import * as actionTypes from '../actions/actionTypes'
 
 const initialState = {
     orders: [],
@@ -18,7 +18,7 @@ const reducer = (state = initialState, action) => {
                 id: action.orderId
             }
             return {
-                ..state,
+                ...state,
                 loading: false,
                 oders: state.orders.concat(newOrder)
             }
