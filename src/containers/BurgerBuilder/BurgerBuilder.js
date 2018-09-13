@@ -8,7 +8,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 import axios from '../../axios-order'
 import Spinner from '../../components/UI/Spiner/Spiner'
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler'
-import * as actionTypes from '../../store/actions'
+import * as burgerBuilderActions from '../../store/actions/index'
 
 class BurgerBuilder extends React.Component {
     constructor(props) {
@@ -22,18 +22,18 @@ class BurgerBuilder extends React.Component {
     }
 
     componentDidMount() {
-        // console.log(this.props)
-        // axios.get('https://my-burgerbuilder.firebaseio.com/ingredients.json')
-        //     .then(res => {
-        //         this.setState({
-        //             ingredients: res.data
-        //         });
-        //     })
-        //     .catch(err => {
-        //         this.setState({
-        //             error: true
-        //         });
-        //     })
+        console.log(this.props)
+        axios.get('https://my-burgerbuilder.firebaseio.com/ingredients.json')
+            .then(res => {
+                this.setState({
+                    ingredients: res.data
+                });
+            })
+            .catch(err => {
+                this.setState({
+                    error: true
+                });
+            })
     }
 
     updatePurchaseState = (ingredients) => {
@@ -125,8 +125,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
-        onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName})
+        onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName))
     }
 }
 
