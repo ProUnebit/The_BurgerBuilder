@@ -2,8 +2,12 @@ import React from 'react'
 import Input from '../../components/UI/Input/Input'
 import Button from '../../components/UI/Button/Button'
 import classes from './Auth.css'
+import * as actions from '../../store/actions/index'
+import { connect } from 'react-redux'
 
 class Auth extends React.Component {
+
+    passwordMinLength = 6;
 
     state = {
         controls: {
@@ -25,12 +29,12 @@ class Auth extends React.Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'password',
-                    placeholder: 'Password'
+                    placeholder: `Password (min: ${this.passwordMinLength} symbols)`
                 },
                 value: '',
                 validation: {
                     required: true,
-                    minLength: 6
+                    minLength: this.passwordMinLength
                 },
                 valid: false,
                 touched: false
@@ -82,6 +86,11 @@ class Auth extends React.Component {
         });
     }
 
+    submitHandler = (e) => {
+        e.preventDefault();
+        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+    }
+
     render () {
 
         let { controls } = this.state;
@@ -110,7 +119,7 @@ class Auth extends React.Component {
 
         return (
             <div className = {classes.Auth}>
-                <form>
+                <form onSubmit = {this.submitHandler}>
                     {form}
                     <Button btnType='Success'>SUBMIT</Button>
                 </form>
@@ -119,4 +128,10 @@ class Auth extends React.Component {
     }
 }
 
-export default Auth;
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (email, password) => dispatch(actions.auth(email, password))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Auth);
