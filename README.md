@@ -1,4 +1,4 @@
-# 🌟 The BurgerBuilder 🌟
+## 🌟 The BurgerBuilder 🌟
 
 ![](src/assets/images/builder-pic.jpg)
 
