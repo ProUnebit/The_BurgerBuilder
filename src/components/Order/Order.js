@@ -28,20 +28,20 @@ const order = (props) => {
             default: textColor = '#222';
         }
 
-        if (ig.amount !== 0) {
-            return <span
-                style = {{
-                    color: textColor,
-                    textTransform: 'capitalize',
-                    display: 'inline-block',
-                    margin: '0 8px',
-                    border: '1px solid #ccc',
-                    padding: '5px'
-                }}
-                key = {ig.name}
-                >{ig.name} ({ig.amount})
-            </span>
-        }
+        if (ig.amount === 0) return null;
+
+        return <span
+            style = {{
+                color: textColor,
+                textTransform: 'capitalize',
+                display: 'inline-block',
+                margin: '0 8px',
+                border: '1px solid #ccc',
+                padding: '5px'
+            }}
+            key = {ig.name}
+            >{ig.name} ({ig.amount})
+        </span>
     })
 
     return (

@@ -13,6 +13,7 @@ const purchaseBurgerStart = (state, action) => updateObject(state, { loading: tr
 
 const purchaseBurgerSuccess = (state, action) => {
     const newOrder = updateObject(action.orderData, { id: action.orderId })
+    console.log(action.date)
     return updateObject(state, {
         loading: false,
         purchased: true,
