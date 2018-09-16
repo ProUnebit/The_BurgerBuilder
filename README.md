@@ -1,6 +1,7 @@
-# The BurgerBuilder
+# ✨✨ The BurgerBuilder ✨✨
 
 ![](src/assets/images/builder-pic.jpg)
+
 <sub><sup>Photo by Pablo Merchán Montes on Unsplash</sup></sub>
 - - -
 
