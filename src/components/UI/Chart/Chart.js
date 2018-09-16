@@ -27,17 +27,17 @@ const chart = ({ ingredients }) => {
         title: {
             display: true,
             position: 'right',
-            padding: 30,
+            padding: 20,
             text: 'Ingredients of your Burger',
-            fontSize: 16,
-            fontColor: 'gray'
+            fontSize: 15,
+            fontColor: 'silver'
         },
         legend: {
             display: true,
             position: 'left'
         },
         layout: {
-            padding: 20
+            padding: 30
         }
     }
 

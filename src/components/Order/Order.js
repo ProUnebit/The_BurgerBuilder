@@ -2,7 +2,10 @@ import React from 'react'
 import classes from './Order.css'
 
 const order = (props) => {
+
     const ingredients = [];
+
+    let textColor;
 
     for (let ingredientName in props.ingredients) {
         ingredients.push({
@@ -12,17 +15,33 @@ const order = (props) => {
     }
 
     const ingredientOutput = ingredients.map(ig => {
-        return <span
-            style = {{
-                textTransform: 'capitalize',
-                display: 'inline-block',
-                margin: '0 8px',
-                border: '1px solid #ccc',
-                padding: '5px'
-            }}
-            key = {ig.name}
-            >{ig.name} ({ig.amount})
-        </span>
+
+        switch (ig.name) {
+            case 'bacon': textColor = '#bf3813';
+            break;
+                case 'cheese': textColor = '#d6bb22';
+                break;
+                    case 'meat': textColor = '#702e05';
+                    break;
+                        case 'salad': textColor = '#228c1d';
+                        break;
+            default: textColor = '#222';
+        }
+
+        if (ig.amount !== 0) {
+            return <span
+                style = {{
+                    color: textColor,
+                    textTransform: 'capitalize',
+                    display: 'inline-block',
+                    margin: '0 8px',
+                    border: '1px solid #ccc',
+                    padding: '5px'
+                }}
+                key = {ig.name}
+                >{ig.name} ({ig.amount})
+            </span>
+        }
     })
 
     return (
